@@ -37,7 +37,7 @@ resource "aws_vpc" "terraform_custom_vpc" {
 #Resource: aws_subnet -->> https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 
 resource "aws_subnet" "terraform_public_subnet" {
-  vpc_id            = aws_vpc.Terraform_Custom_VPC.id
+  vpc_id            = aws_vpc.terraform_custom_vpc.id
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1"
 
@@ -47,7 +47,7 @@ resource "aws_subnet" "terraform_public_subnet" {
 }
 
 resource "aws_subnet" "terraform_private_subnet" {
-  vpc_id            = aws_vpc.Terraform_Custom_VPC.id
+  vpc_id            = aws_vpc.terraform_custom_vpc.id
   cidr_block        = "10.0.2.0/24"
   availability_zone = "us-east-1"
 
