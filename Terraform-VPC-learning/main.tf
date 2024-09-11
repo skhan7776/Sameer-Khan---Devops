@@ -49,7 +49,7 @@ resource "aws_subnet" "terraform_public_subnet" {
 resource "aws_subnet" "terraform_private_subnet" {
   vpc_id            = aws_vpc.terraform_custom_vpc.id
   cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "Terraform Private Subnet"
