@@ -37,9 +37,9 @@ resource "aws_vpc" "terraform_custom_vpc" {
 #Resource: aws_subnet -->> https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/subnet
 
 resource "aws_subnet" "terraform_public_subnet" {
-  vpc_id            = aws_vpc.Terraform_Custom_VPC.id
+  vpc_id            = aws_vpc.terraform_custom_vpc.id
   cidr_block        = "10.0.1.0/24"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1b"
 
   tags = {
     Name = "Terraform Public Subnet"
@@ -47,9 +47,9 @@ resource "aws_subnet" "terraform_public_subnet" {
 }
 
 resource "aws_subnet" "terraform_private_subnet" {
-  vpc_id            = aws_vpc.Terraform_Custom_VPC.id
+  vpc_id            = aws_vpc.terraform_custom_vpc.id
   cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-1"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "Terraform Private Subnet"
@@ -136,19 +136,7 @@ resource "aws_instance" "web_instance" {
   subnet_id                   = aws_subnet.terraform_public_subnet.id
   vpc_security_group_ids      = [aws_security_group.web_sg.id]
   associate_public_ip_address = true
-
-  user_data = <<-EOF
-  #!/bin/bash
-  # Use this for your user data (script from top to bottom)
-  # install httpd (Linux 2 version)
-yum update -y
-yum install -y httpd
-systemctl start httpd
-systemctl enable httpd
-echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
-
-  tags = {
-    "Name" : "Sameer"
+   tags={
+    name = var.instance_name
   }
-} 
-
+}
