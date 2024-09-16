@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: New
 
 # Controls when the workflow will run
 on:
@@ -34,3 +34,8 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+      
+      # Runs sample text
+      - name: Run a multi-line script
+        run: |
+          echo Hello sameer welcome to first action.
