@@ -38,4 +38,4 @@ jobs:
       # Runs sample text
       - name: Run a multi-line script
         run: |
-          "Hello sameer welcome to first action."
+          echo Hello sameer welcome to first action.
