@@ -36,6 +36,6 @@ jobs:
           echo test, and deploy your project.
       
       # Runs sample text
-      - name: Run a multi-line script
+      - name: Run my customize text 
         run: |
           echo Hello sameer welcome to first action.
